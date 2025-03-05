@@ -1,8 +1,7 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 
-import fs from 'fs'
-import path from 'path'
+
 
 const app = new Hono()
 
@@ -85,53 +84,130 @@ app.get('/', async (c) => {
 
 app.get('/privacy-policy', async (c) => {
   try {
-    const policyPath = path.join(process.cwd(), 'src', 'static', 'privacy-policy.txt')
-    const policyContent = await fs.promises.readFile(policyPath, 'utf-8')
-    
-    // Convert plain text to HTML with proper formatting
-    const htmlContent = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Duet - Privacy Policy</title>
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
-          }
-          h1 {
-            text-align: center;
-            margin-bottom: 30px;
-          }
-          h2 {
-            margin-top: 20px;
-          }
-          p {
-            margin-bottom: 15px;
-          }
-          .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            text-decoration: none;
-            color: #0066cc;
-          }
-        </style>
-      </head>
-      <body>
-        <h1>Privacy Policy</h1>
-        ${policyContent.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('')}
-        <a href="/" class="back-link">← Back to Home</a>
-      </body>
-      </html>
-    `
-    
-    return c.html(htmlContent)
+
+    return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duet - Privacy Policy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h2 {
+      margin-top: 20px;
+      font-weight: 600;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    ul {
+      margin-bottom: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      color: #0066cc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy for Duet</h1>
+  <p><strong>Effective Date: 3/5/2025</strong></p>
+  
+  <div class="section">
+    <h2>1. Introduction</h2>
+    <p>Welcome to Duet, an email-based AI agent service. We respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and protect your data when you interact with Duet.</p>
+  </div>
+  
+  <div class="section">
+    <h2>2. Information We Collect</h2>
+    <ul>
+      <li><strong>Email Content:</strong> We collect and store the content of emails sent to Duet, including the subject line, body, and any attachments, to process and generate AI responses.</li>
+      <li><strong>Email Metadata:</strong> This includes sender and recipient email addresses, timestamps, and thread information to maintain conversation context.</li>
+      <li><strong>User Preferences:</strong> Any settings or preferences explicitly provided by the user (such as preferred response tone) may be stored.</li>
+      <li><strong>Technical Data:</strong> We may collect technical data, such as IP addresses and logs, for security and operational purposes.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>3. How We Use Your Information</h2>
+    <ul>
+      <li>To provide AI-generated responses to your emails.</li>
+      <li>To maintain the full email conversation context for continuity.</li>
+      <li>To improve the quality and accuracy of responses through iterative learning (without sharing personal data).</li>
+      <li>To ensure the security and proper functioning of our service.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>4. Data Storage and Security</h2>
+    <ul>
+      <li>All user data is encrypted during transmission and storage.</li>
+      <li>We store conversation history securely in our database (Percona MongoDB) to maintain thread continuity.</li>
+      <li>We implement strict access controls to prevent unauthorized access to user data.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>5. Data Sharing and Third Parties</h2>
+    <ul>
+      <li><strong>No Third-Party Sharing:</strong> We do not sell, trade, or share your personal data with third parties.</li>
+      <li><strong>Service Providers:</strong> We use Mailgun for email processing and OpenAI for AI-generated responses, both of which adhere to strict privacy and security standards.</li>
+      <li><strong>Legal Compliance:</strong> We may disclose information if required by law or to protect our legal rights.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>6. Data Retention</h2>
+    <ul>
+      <li>Emails and conversation history are retained to ensure continuity of conversations.</li>
+      <li>Users may request deletion of their data by contacting us at support@duet.cx.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>7. User Rights and Choices</h2>
+    <ul>
+      <li>You can request access to your stored email conversations.</li>
+      <li>You may opt-out of using Duet at any time.</li>
+      <li>You can request data deletion, subject to legal and operational requirements.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>8. Changes to This Privacy Policy</h2>
+    <p>We may update this Privacy Policy periodically. We will notify users of significant changes by email or through our website.</p>
+  </div>
+  
+  <div class="section">
+    <h2>9. Contact Information</h2>
+    <p>If you have any questions about this Privacy Policy, please contact us at support@duet.cx.</p>
+  </div>
+  
+  <p>By using Duet, you acknowledge that you have read and understood this Privacy Policy and consent to our data practices.</p>
+  
+  <a href="/" class="back-link">← Back to Home</a>
+</body>
+</html>
+`)
   } catch (error) {
     console.error('Error loading privacy policy:', error)
     return c.text('Privacy Policy not found', 404)
@@ -140,53 +216,130 @@ app.get('/privacy-policy', async (c) => {
 
 app.get('/terms-and-conditions', async (c) => {
   try {
-    const termsPath = path.join(process.cwd(), 'src', 'static', 'terms-and-condition.txt')
-    const termsContent = await fs.promises.readFile(termsPath, 'utf-8')
-    
-    // Convert plain text to HTML with proper formatting
-    const htmlContent = `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Duet - Terms and Conditions</title>
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
-          }
-          h1 {
-            text-align: center;
-            margin-bottom: 30px;
-          }
-          h2 {
-            margin-top: 20px;
-          }
-          p {
-            margin-bottom: 15px;
-          }
-          .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            text-decoration: none;
-            color: #0066cc;
-          }
-        </style>
-      </head>
-      <body>
-        <h1>Terms and Conditions</h1>
-        ${termsContent.split('\n\n').map(paragraph => `<p>${paragraph}</p>`).join('')}
-        <a href="/" class="back-link">← Back to Home</a>
-      </body>
-      </html>
-    `
-    
-    return c.html(htmlContent)
+
+    return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duet - Terms and Conditions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h2 {
+      margin-top: 20px;
+      font-weight: 600;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    ul {
+      margin-bottom: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      color: #0066cc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Terms and Conditions for Duet</h1>
+  <p><strong>Effective Date: 3/5/2025</strong></p>
+  
+  <div class="section">
+    <h2>1. Introduction</h2>
+    <p>Welcome to Duet, an email-based AI agent service. We respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and protect your data when you interact with Duet.</p>
+  </div>
+  
+  <div class="section">
+    <h2>2. Information We Collect</h2>
+    <ul>
+      <li><strong>Email Content:</strong> We collect and store the content of emails sent to Duet, including the subject line, body, and any attachments, to process and generate AI responses.</li>
+      <li><strong>Email Metadata:</strong> This includes sender and recipient email addresses, timestamps, and thread information to maintain conversation context.</li>
+      <li><strong>User Preferences:</strong> Any settings or preferences explicitly provided by the user (such as preferred response tone) may be stored.</li>
+      <li><strong>Technical Data:</strong> We may collect technical data, such as IP addresses and logs, for security and operational purposes.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>3. How We Use Your Information</h2>
+    <ul>
+      <li>To provide AI-generated responses to your emails.</li>
+      <li>To maintain the full email conversation context for continuity.</li>
+      <li>To improve the quality and accuracy of responses through iterative learning (without sharing personal data).</li>
+      <li>To ensure the security and proper functioning of our service.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>4. Data Storage and Security</h2>
+    <ul>
+      <li>All user data is encrypted during transmission and storage.</li>
+      <li>We store conversation history securely in our database (Percona MongoDB) to maintain thread continuity.</li>
+      <li>We implement strict access controls to prevent unauthorized access to user data.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>5. Data Sharing and Third Parties</h2>
+    <ul>
+      <li><strong>No Third-Party Sharing:</strong> We do not sell, trade, or share your personal data with third parties.</li>
+      <li><strong>Service Providers:</strong> We use Mailgun for email processing and OpenAI for AI-generated responses, both of which adhere to strict privacy and security standards.</li>
+      <li><strong>Legal Compliance:</strong> We may disclose information if required by law or to protect our legal rights.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>6. Data Retention</h2>
+    <ul>
+      <li>Emails and conversation history are retained to ensure continuity of conversations.</li>
+      <li>Users may request deletion of their data by contacting us at support@duet.cx.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>7. User Rights and Choices</h2>
+    <ul>
+      <li>You can request access to your stored email conversations.</li>
+      <li>You may opt-out of using Duet at any time.</li>
+      <li>You can request data deletion, subject to legal and operational requirements.</li>
+    </ul>
+  </div>
+  
+  <div class="section">
+    <h2>8. Changes to This Privacy Policy</h2>
+    <p>We may update this Privacy Policy periodically. We will notify users of significant changes by email or through our website.</p>
+  </div>
+  
+  <div class="section">
+    <h2>9. Contact Information</h2>
+    <p>If you have any questions about this Privacy Policy, please contact us at support@duet.cx.</p>
+  </div>
+  
+  <p>By using Duet, you acknowledge that you have read and understood this Privacy Policy and consent to our data practices.</p>
+  
+  <a href="/" class="back-link">← Back to Home</a>
+</body>
+</html>
+`)
   } catch (error) {
     console.error('Error loading terms and conditions:', error)
     return c.text('Terms and Conditions not found', 404)
@@ -199,3 +352,4 @@ serve({
 }, (info) => {
   console.log(`Server is running on http://localhost:${info.port}`)
 })
+  
