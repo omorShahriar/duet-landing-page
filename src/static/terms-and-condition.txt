@@ -1,0 +1,64 @@
+Privacy Policy for Duet
+
+Effective Date: 3/5/2025
+
+1. Introduction
+Welcome to Duet, an email-based AI agent service. We respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and protect your data when you interact with Duet.
+
+2. Information We Collect
+
+Email Content: We collect and store the content of emails sent to Duet, including the subject line, body, and any attachments, to process and generate AI responses.
+
+Email Metadata: This includes sender and recipient email addresses, timestamps, and thread information to maintain conversation context.
+
+User Preferences: Any settings or preferences explicitly provided by the user (such as preferred response tone) may be stored.
+
+Technical Data: We may collect technical data, such as IP addresses and logs, for security and operational purposes.
+
+3. How We Use Your Information
+
+To provide AI-generated responses to your emails.
+
+To maintain the full email conversation context for continuity.
+
+To improve the quality and accuracy of responses through iterative learning (without sharing personal data).
+
+To ensure the security and proper functioning of our service.
+
+4. Data Storage and Security
+
+All user data is encrypted during transmission and storage.
+
+We store conversation history securely in our database (Percona MongoDB) to maintain thread continuity.
+
+We implement strict access controls to prevent unauthorized access to user data.
+
+5. Data Sharing and Third Parties
+
+No Third-Party Sharing: We do not sell, trade, or share your personal data with third parties.
+
+Service Providers: We use Mailgun for email processing and OpenAI for AI-generated responses, both of which adhere to strict privacy and security standards.
+
+Legal Compliance: We may disclose information if required by law or to protect our legal rights.
+
+6. Data Retention
+
+Emails and conversation history are retained to ensure continuity of conversations.
+
+Users may request deletion of their data by contacting us at [Insert Contact Email].
+
+7. User Rights and Choices
+
+You can request access to your stored email conversations.
+
+You may opt-out of using Duet at any time.
+
+You can request data deletion, subject to legal and operational requirements.
+
+8. Changes to This Privacy Policy
+We may update this Privacy Policy periodically. We will notify users of significant changes by email or through our website.
+
+9. Contact Information
+If you have any questions about this Privacy Policy, please contact us at [Insert Contact Email].
+
+By using Duet, you acknowledge that you have read and understood this Privacy Policy and consent to our data practices.
