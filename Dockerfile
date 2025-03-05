@@ -1,18 +1,12 @@
-FROM nginx:alpine
+FROM node:18-alpine
 
-# Copy all HTML files to nginx serve directory
-COPY *.html /usr/share/nginx/html/
+WORKDIR /app
 
-# Create directories for the additional pages
-RUN mkdir -p /usr/share/nginx/html/privacy-policy \
-    && mkdir -p /usr/share/nginx/html/terms-and-conditions
+COPY package*.json ./
+RUN npm install
 
-# Move the HTML files to their respective directories
-RUN mv /usr/share/nginx/html/privacy-policy.html /usr/share/nginx/html/privacy-policy/index.html \
-    && mv /usr/share/nginx/html/terms-and-conditions.html /usr/share/nginx/html/terms-and-conditions/index.html
+COPY . .
 
-COPY default.conf /etc/nginx/conf.d/default.conf
+EXPOSE 3000
 
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]
