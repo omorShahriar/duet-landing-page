@@ -1,0 +1,54 @@
+1. Introduction
+Welcome to Duet, an email-based AI agent service. By using Duet, you agree to these Terms of Service. If you do not agree, please refrain from using our service.
+
+2. Service Description
+Duet allows users to interact with an AI agent via email. The AI processes email content and generates responses while maintaining conversation context.
+
+3. User Responsibilities
+
+You agree to use Duet only for lawful purposes.
+
+You must not use the service to send spam, offensive, harmful, or illegal content.
+
+You are responsible for ensuring that the emails you send to Duet do not contain sensitive or confidential information.
+
+You may not attempt to disrupt or exploit the system for unauthorized purposes.
+
+4. Data Usage and Privacy
+
+By using Duet, you consent to our collection and processing of email content as described in our [Privacy Policy].
+
+We do not share user data with third parties, except as required for service operation (e.g., Mailgun for email processing, OpenAI for response generation).
+
+Users can request data deletion by contacting us at [Insert Contact Email].
+
+5. Service Availability
+
+We strive to maintain reliable service but do not guarantee uninterrupted or error-free operation.
+
+We reserve the right to modify, suspend, or discontinue the service at any time without prior notice.
+
+6. Limitation of Liability
+
+Duet is provided "as is" without warranties of any kind.
+
+We are not responsible for any inaccuracies, errors, or damages resulting from the use of the service.
+
+We shall not be liable for any indirect, incidental, or consequential damages arising from the use of Duet.
+
+7. Modifications to Terms
+
+We may update these Terms of Service from time to time.
+
+Continued use of Duet after changes take effect constitutes acceptance of the new terms.
+
+8. Termination
+
+We reserve the right to terminate or suspend user access if there is a violation of these Terms.
+
+Users may discontinue using Duet at any time.
+
+9. Contact Information
+For any questions regarding these Terms of Service, please contact us at [Insert Contact Email].
+
+By using Duet, you acknowledge that you have read and understood these Terms of Service and agree to abide by them.
